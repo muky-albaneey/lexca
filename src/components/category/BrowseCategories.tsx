@@ -1,5 +1,5 @@
 'use client';
-
+import { AiOutlineSearch } from "react-icons/ai"; 
 import { useState } from 'react';
 
 const categories = [
@@ -10,6 +10,7 @@ const categories = [
       'Discover the latest gadgets, audio equipment, smart home devices, and more from top electronics brands.',
     products: 245,
     icon: '💻',
+    bg: '#DBEAFE',
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ const categories = [
       'Explore trendy clothing, accessories, footwear, and jewelry for all ages and styles.',
     products: 378,
     icon: '🛍️',
+    bg: '#F3E8FF',
   },
   {
     id: 3,
@@ -26,6 +28,7 @@ const categories = [
       'Find everything you need for your home, from kitchen appliances to furniture and home decor.',
     products: 312,
     icon: '🏠',
+    bg: '#FEF3C7',
   },
 ];
 
@@ -48,13 +51,14 @@ export default function BrowseCategories() {
       </div>
 
       {/* Search */}
-      <div className="flex justify-center mb-6">
+      <div className="flex justify-center mb-6 relative w-full md:w-[50%] m-auto">
+        <AiOutlineSearch className="absolute left-3 top-3" />
         <input
           type="text"
           placeholder="Search Products..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full md:w-96 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400"
+          className="w-full  px-12 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-400"
         />
       </div>
 
@@ -74,9 +78,9 @@ export default function BrowseCategories() {
             key={category.id}
             className="border border-[#E5E5E5] rounded-xl shadow-sm hover:shadow-md transition p-5 cursor-pointer p-10"
           >
-            <div className="flex items-start gap-4 flex-col">
+            <div className="flex items-start gap-4 flex-col ">
               {/* Icon */}
-              <div className="text-3xl">
+              <div className={`text-2xl rounded-2xl p-2`} style={{ backgroundColor: category.bg }}>
                 {category.icon}
               </div>
 

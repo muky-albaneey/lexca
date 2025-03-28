@@ -52,7 +52,7 @@ const relatedProducts = [
   },
 ];
 
-const RelatedProducts = () => {
+const RelatedProducts = ({headingText, isLeft, isRight}) => {
   const [scrollIndex, setScrollIndex] = useState(0);
   const itemsPerPage = 4;
 
@@ -66,7 +66,8 @@ const RelatedProducts = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 ">
-      <h2 className="text-2xl font-semibold mb-4">Related Products</h2>
+      <h2 className="text-2xl font-semibold">{headingText}</h2>
+      <h3 className="text-sm font-semibold mb-4">{isLeft}</h3>
       <div className="relative">
         <div className="hidden md:flex gap-4 overflow-hidden ml-40">
           {relatedProducts.slice(scrollIndex, scrollIndex + itemsPerPage).map((product) => (

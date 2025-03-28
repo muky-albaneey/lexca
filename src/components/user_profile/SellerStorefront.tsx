@@ -50,8 +50,8 @@ const SellerStorefront = () => {
     <div className="container mx-auto p-4">
       {/* Store Info */}
       <div className="flex flex-col lg:flex-row justify-between">
-        <div className="space-y-4">
-          <h1 className="text-3xl font-bold">AudioTech Pro</h1>
+        <div className="space-y-3.5">
+          <h1 className="text-2xl font-bold">AudioTech Pro</h1>
           <div className="flex items-center space-x-2">
             <span className="text-yellow-400 text-xl">⭐</span>
             <span className="text-gray-700 font-medium">

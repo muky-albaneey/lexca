@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import { FaQuoteLeft, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
@@ -8,13 +9,13 @@ const testimonials = [
     text: "Affiliate has completely changed how I monetize my fashion blog. The platform is intuitive, the commission rates are competitive, and I love how easy it is to track my earnings.",
     name: 'Sarah Johnson',
     role: 'Fashion Blogger',
-    image: '/images/user.png', // Replace with an actual image path
+    image: '/user.svg', // Replace with an actual image path
   },
   {
     text: "Using this platform has increased my earnings by 30%! It's easy to use and very effective.",
     name: 'John Doe',
     role: 'Tech Reviewer',
-    image: '/images/user2.png', // Replace with an actual image path
+    image: '/user.svg', // Replace with an actual image path
   },
 ];
 
@@ -32,7 +33,7 @@ const TestimonialCarousel = () => {
   };
 
   return (
-    <div className="bg-blue-100 py-16">
+    <div className="bg-[#DBEAFE] py-16">
       <h2 className="text-2xl font-bold text-center mb-8">What Our Users Say</h2>
       <div className="flex items-center justify-center">
         <button
@@ -48,11 +49,13 @@ const TestimonialCarousel = () => {
             {testimonials[currentIndex].text}
           </p>
           <div className="flex items-center">
-            <img
-              src={testimonials[currentIndex].image}
-              alt={testimonials[currentIndex].name}
-              className="w-12 h-12 rounded-full mr-4"
-            />
+          <Image
+            src={testimonials[currentIndex].image}
+            alt={testimonials[currentIndex].name}
+            width={48} // 12 * 4 = 48px
+            height={48} // 12 * 4 = 48px
+            className="w-12 h-12 rounded-full mr-4"
+          />
             <div>
               <p className="font-semibold">{testimonials[currentIndex].name}</p>
               <p className="text-gray-500 text-sm">{testimonials[currentIndex].role}</p>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { RiGroupLine } from "react-icons/ri"; 
 
 const MeetOurTeam = () => {
   const team = [
@@ -26,9 +27,7 @@ const MeetOurTeam = () => {
         <div className="text-center">
           <div className="flex justify-center mb-4">
             <div className="bg-blue-100 text-blue-500 p-3 rounded-full">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 10c0 3.866-3.134 7-7 7S4 13.866 4 10 7.134 3 11 3s7 3.134 7 7zM5.32 16.584a9 9 0 0113.36 0M15 21h-6" />
-              </svg>
+              <RiGroupLine />
             </div>
           </div>
           <h2 className="text-2xl font-semibold text-gray-900">Meet our team</h2>
@@ -73,17 +72,17 @@ const MeetOurTeam = () => {
       </div>
 
       {/* Affiliate Program Section */}
-      <div className="bg-gray-900 text-white py-12">
+      <div className="bg-gray-900 text-white py-12 mt-10">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-xl font-semibold">Join our affiliate program</h2>
-          <p className="mt-2 text-gray-400">
+          <h2 className="text-xl font-semibold md:text-left ">Join our affiliate program</h2>
+          <p className="mt-2 text-gray-400 md:text-left">
             Sign up to receive news and updates about new products and special commissions opportunities.
           </p>
-          <div className="mt-6 flex justify-center">
+          <div className="w-full md:w-60%] mt-6 flex justify-center md:justify-start">
             <input
               type="email"
               placeholder="Your email address"
-              className="px-4 py-2 w-64 bg-gray-800 border border-gray-700 text-white rounded-l-md focus:outline-none"
+              className="md:w-[70%] md:px-4 md:py-2  bg-[#808080] border border-gray-700 text-white focus:outline-none"
             />
             <button className="bg-white text-black px-4 py-2 rounded-r-md font-medium hover:bg-gray-200 transition">
               Start Now →

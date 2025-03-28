@@ -9,7 +9,7 @@ const articles = [
     date: 'Mar 15, 2025',
     readTime: '8 min read',
     author: 'Sarah Johnson',
-    image: '/images/seo.jpg', // Add actual image paths here
+    image: '/seo.svg', // Add actual image paths here
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const articles = [
     date: 'Mar 10, 2025',
     readTime: '6 min read',
     author: 'Michael Chen',
-    image: '/images/products.jpg', // Add actual image paths here
+    image: '/products.svg', // Add actual image paths here
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const articles = [
     date: 'Mar 5, 2025',
     readTime: '7 min read',
     author: 'Emma Davis',
-    image: '/images/trust.jpg', // Add actual image paths here
+    image: '/trust.svg', // Add actual image paths here
   },
 ];
 

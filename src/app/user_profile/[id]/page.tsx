@@ -4,9 +4,11 @@ import React from 'react'
 
 export default function User_profile() {
   return (
-    <div>
+    <div className='py-2'>
         <SellerHead />
-        <SellerStorefront />
+        <div className='mt-10'>
+     <SellerStorefront />
+   </div>
     </div>
   )
 }

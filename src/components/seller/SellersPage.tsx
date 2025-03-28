@@ -21,9 +21,10 @@ const sellers = [
     reviews: 156,
     products: 42,
     since: "May 2021",
-    image: "/audio-tech.jpg",
+    image: "/audio-tech.svg",
     featured: true,
     verificationStatus: "Verified Sellers",
+    description:'Specializing in premium audio equipment with expert reviews and competitive pricing. Join our affiliate…',
   },
   {
     id: 2,
@@ -33,9 +34,11 @@ const sellers = [
     reviews: 98,
     products: 67,
     since: "Nov 2020",
-    image: "/fit-gear.jpg",
+    image: "/fit-gear.svg",
     featured: true,
     verificationStatus: "Top Rated Sellers",
+    description:'Your one-stop shop for fitness equipment, workout gear, and supplements. Our products are tested…',
+
   },
   {
     id: 3,
@@ -45,9 +48,10 @@ const sellers = [
     reviews: 201,
     products: 28,
     since: "Jun 2020",
-    image: "/comfort-seating.jpg",
+    image: "/comfort-seatings.svg",
     featured: true,
     verificationStatus: "Featured Sellers",
+    description:'High-quality displays, TVs, and visual equipment for home and office. We offer extended warranties on all our…',
   },
   {
     id: 4,
@@ -57,9 +61,10 @@ const sellers = [
     reviews: 87,
     products: 53,
     since: "Aug 2021",
-    image: "/kitchen-pro.jpg",
+    image: "/kitchen-pro.svg",
     featured: false,
     verificationStatus: "Verified Sellers",
+    description:'Professional kitchen equipment for home chefs. Our products are used by professional chefs around the world.',
   },
   {
     id: 5,
@@ -69,9 +74,11 @@ const sellers = [
     reviews: 124,
     products: 35,
     since: "Jan 2022",
-    image: "/visual-plus.jpg",
+    image: "/visual-plus.svg",
     featured: false,
     verificationStatus: "Top Rated Sellers",
+    description:'Ergonomic office chairs and comfortable seating solutions for home and office. Designed with your comfo…',
+
   },
   {
     id: 6,
@@ -81,9 +88,10 @@ const sellers = [
     reviews: 76,
     products: 31,
     since: "Mar 2022",
-    image: "/soundwave.jpg",
+    image: "/soundwave.svg",
     featured: false,
     verificationStatus: "Verified Sellers",
+    description:'Portable audio solutions for music lovers on the go. Our products are designed for durability and superior…',
   },
   {
     id: 7,
@@ -93,9 +101,11 @@ const sellers = [
     reviews: 112,
     products: 45,
     since: "Feb 2021",
-    image: "/photo-pro.jpg",
+    image: "/photo-pro.svg",
     featured: false,
     verificationStatus: "Top Rated Sellers",
+    description:'Professional photography equipment and accessories. Trusted by professional photographers worldwide.',
+
   },
   {
     id: 8,
@@ -105,9 +115,10 @@ const sellers = [
     reviews: 93,
     products: 37,
     since: "Nov 2021",
-    image: "/safe-home.jpg",
+    image: "/safe-home.svg",
     featured: false,
     verificationStatus: "Verified Sellers",
+    description:'Smart home security systems and devices to keep your family safe. Easy to install and use with 24/7 monitorin…',
   },
   {
     id: 9,
@@ -117,9 +128,10 @@ const sellers = [
     reviews: 84,
     products: 49,
     since: "Jan 2022",
-    image: "/kitchen-elite.jpg",
+    image: "/kitchen-elite.svg",
     featured: false,
     verificationStatus: "Top Rated Sellers",
+    description:'Premium cookware and kitchen accessories for the discerning home chef. Our products are designed to la…',
   }
 ];
 
@@ -182,7 +194,7 @@ const sellers = [
               </div>
             ))}
           </div>
-          <hr className="my-2" />
+          <hr className="my-2 bg-[#E5E5E5] text-[#E5E5E5]" />
   
           {/* Categories */}
           <div>
@@ -203,7 +215,7 @@ const sellers = [
               </div>
             ))}
           </div>
-          <hr className="my-2" />
+          <hr className="my-2 text-[#E5E5E5]" />
   
           {/* Joined Date */}
           <div>
@@ -222,7 +234,7 @@ const sellers = [
               </div>
             ))}
           </div>
-          <hr className="my-2" />
+          <hr className="my-2 text-[#E5E5E5]" />
   
           {/* Verification Status */}
           <div>
@@ -243,7 +255,7 @@ const sellers = [
               </div>
             ))}
           </div>
-          <hr className="my-2" />
+          <hr className="my-2 text-[#E5E5E5]" />
   
           {/* Apply Filters Button */}
           <button className="w-full py-2 rounded-md bg-black text-white hover:opacity-90">
@@ -360,7 +372,7 @@ const SellersPage = () => {
     <div className="max-w-7xl mx-auto px-4">
      
 
-      <div className="flex flex-col justify-between items-center mb-6 gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
         <div className="relative flex flex-col md:flex-row items-center w-full md:w-3/4 gap-2">
           <div className="relative w-full">
             <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
@@ -369,14 +381,12 @@ const SellersPage = () => {
             <input
               type="text"
               placeholder="Search by name..."
-              className="border-[0] rounded-md py-2 pl-10 pr-3 w-full text-sm bg-gray-100 outline-none"
+              className="border-[0] rounded-md py-2 pl-10 pr-3 w-full md:w-[45%] text-sm bg-gray-100 outline-none"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
-          <button className="bg-[#8B4513] text-white px-4 py-2 rounded-md text-sm font-medium w-[70%] md:w-[15rem]">
-            Search
-          </button>
+         
         </div>
 
             {/* Sort Dropdown */}
@@ -404,9 +414,14 @@ const SellersPage = () => {
                   <Image src={seller.image} alt={seller.name} layout="fill" objectFit="cover" className="rounded-t-lg" />
                 </div>
                 <div className="mt-4">
+                  <div className="w-full flex justify-between">
                   <h3 className="text-lg font-semibold">{seller.name}</h3>
+                  <p className="text-sm text-gray-600 mt-2">⭐ {seller.rating} ({seller.reviews})</p>
+                  </div>
                   <span className="bg-gray-200 text-xs px-2 py-1 rounded">{seller.category}</span>
-                  <p className="text-sm text-gray-600 mt-2">⭐ {seller.rating} ({seller.reviews} reviews)</p>
+                  <p className="text-sm text-gray-600 mt-2">
+                  {seller.description}
+                  </p>
                   <p className="text-sm text-gray-500">📦 {seller.products} Products • Since {seller.since}</p>
                   <button className="mt-4 bg-black text-white px-4 py-2 rounded w-full">View Profile</button>
                 </div>

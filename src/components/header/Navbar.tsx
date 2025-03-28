@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import { FiMenu, FiX, FiSearch, FiUser, FiShoppingCart } from 'react-icons/fi';
 
@@ -13,8 +14,14 @@ const Navbar = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div className="flex items-center">
-            <img src="/logo.png" alt="Logo" className="h-10 w-auto" />
-          </div>
+          <Image
+            src="/lexca_logo.svg"
+            alt="Logo"
+            width={40} // Set your desired width
+            height={40} // Set your desired height
+            className="h-10 w-auto"
+          />
+        </div>
 
           {/* Desktop Links */}
           <nav className="hidden md:flex gap-8 items-center">
@@ -46,7 +53,13 @@ const Navbar = () => {
         }`}
       >
         <div className="flex justify-between items-center px-4 py-4 border-b">
-          <img src="/logo.png" alt="Logo" className="h-10 w-auto" />
+          <Image
+            src="/lexca_logo.svg"
+            alt="Logo"
+            width={40} // Set your desired width
+            height={40} // Set your desired height
+            className="h-10 w-auto"
+          />
           <button onClick={() => setIsOpen(false)}>
             <FiX size={28} className="text-gray-700" />
           </button>

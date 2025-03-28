@@ -9,7 +9,7 @@ const products = [
     price: '$249.99',
     rating: '4.8',
     brand: 'AudioTech Pro',
-    image: '/headphones.png',
+    image: '/headphones.svg',
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const products = [
     price: '$129.99',
     rating: '4.6',
     brand: 'FitGear',
-    image: '/watch.png',
+    image: '/watch.svg',
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const products = [
     price: '$599.99',
     rating: '4.7',
     brand: 'VisualPlus',
-    image: '/tv.png',
+    image: '/tv.svg',
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ const products = [
     price: '$189.99',
     rating: '4.5',
     brand: 'KitchenPro',
-    image: '/blender.png',
+    image: '/blender.svg',
   },
   {
     id: 5,
@@ -41,7 +41,7 @@ const products = [
     price: '$299.99',
     rating: '4.9',
     brand: 'ComfortSeating',
-    image: '/chair.png',
+    image: '/chair.svg',
   },
   {
     id: 6,
@@ -49,7 +49,7 @@ const products = [
     price: '$79.99',
     rating: '4.4',
     brand: 'SoundWave',
-    image: '/speaker.png',
+    image: '/speaker.svg',
   },
 ];
 

@@ -10,7 +10,7 @@ const sellers = [
     reviews: 156,
     products: 42,
     since: 'May 2021',
-    image: '/audio-tech.jpg',
+    image: '/audio-tech.svg',
     featured: true,
   },
   {
@@ -21,7 +21,7 @@ const sellers = [
     reviews: 98,
     products: 67,
     since: 'Nov 2020',
-    image: '/fit-gear.jpg',
+    image: '/fit-gear.svg',
     featured: true,
   },
   {
@@ -32,7 +32,7 @@ const sellers = [
     reviews: 201,
     products: 28,
     since: 'Jun 2020',
-    image: '/comfort-seating.jpg',
+    image: '/comfort-seating.svg',
     featured: true,
   },
 ];
