@@ -9,6 +9,14 @@ import DashboardWidgets from "./DashboardWidgets";
 import Notifications from "./Notifications";
 import UserProductPage from "./UserProductPage";
 import UploadProduct from "./UploadProduct";
+import ReferralsDashboard from "./ReferralsDashboard";
+import TrackingAnalytics from "./TrackingAnalytics";
+import AffiliateLinks from "./AffiliateLinks";
+import CreateLink from "./CreateLink";
+import BlogPage from "./BlogPage";
+import CreatePostPage from "./CreatePostPage";
+import EarningsPayouts from "./EarningsPayouts";
+import SettingsPage from "./SettingsPage";
 
 const data = Array.from({ length: 30 }, (_, i) => ({
   name: `Jan ${i + 1}`,
@@ -106,6 +114,7 @@ function DashboardInfo() {
   );
 }
 
+
 export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [status, setStatus] = useState("overview");
@@ -117,30 +126,30 @@ export default function Dashboard() {
       case "upload":
         return <UploadProduct />;
       case "links":
-        return <div>Affiliate Links</div>;
+        return <AffiliateLinks />;
       case "earnings":
-        return <div>Earnings & Payouts</div>;
+        return <EarningsPayouts />;
       case "referrals":
-        return <div>Referrals</div>;
+        return <ReferralsDashboard />;
       case "tracking":
-        return <div>Tracking</div>;
+        return <TrackingAnalytics />
       case "blog":
-        return <div>Blog</div>;
+        return <BlogPage />;
       case "message":
         return <div>Message</div>;
       case "setting":
-        return <div>Settings</div>;
+        return <SettingsPage />;
        case "Notifications":
         return <Notifications />;
-       case "Overview":
-        return <div>Overview</div>;
+      //  case "Overview":
+      //   return <div>Overview</div>;
        case "Products":
         return <UserProductPage />;
       default:
         return <DashboardInfo />;
     }
   };
-
+  // CreateLink
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
