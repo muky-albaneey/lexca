@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import SellerStorefront from './SellerStorefront';
 
 const SellerHead = () => {
   return (
@@ -19,16 +18,16 @@ const SellerHead = () => {
       <div className="absolute left-4 -bottom-12 md:-bottom-8 flex items-center space-x-4 z-50">
         {/* Logo */}
         <div className="w-24 h-28 md:w-16 md:h-20 border-4 border-gray-100 rounded-full overflow-hidden relative">
-  <Image
-    src="/logo.svg"
-    alt="Logo"
-    layout="fill"
-    objectFit="cover"
-  />
-</div>
+            <Image
+              src="/logo.svg"
+              alt="Logo"
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
         <div>
           {/* Featured Seller Badge */}
-          <span className="bg-black text-white text-xs font-semibold px-2 py-1 rounded-full absolute top-10 w-36">
+          <span className="bg-black text-white text-xs font-semibold px-2 py-1 rounded-full absolute left-40 md:left-24  top-20 md:top-10 w-36">
             Featured Seller
           </span>
         </div>

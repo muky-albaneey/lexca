@@ -27,12 +27,12 @@ const AffiliateProgram_2 = () => {
           sell, the higher your commission rate.
         </p>
         {/* Tabs */}
-        <div className="flex justify-center mt-4 border-b">
+        <div className="flex justify-center mt-4 bg-[#E5E5E5] p-1 md:p-2">
           {["Standard Commission", "Tiered Commission"].map((tab) => (
             <button
               key={tab}
-              className={`px-4 py-2 ${
-                activeTab === tab ? "border-b-2 border-black font-bold" : "text-gray-600"
+              className={`px-4 py-2  ${
+                activeTab === tab ? "font-bold bg-[#fff] w-[50%]" : "text-gray-600 w-[50%] bg-[#E5E5E5]"
               }`}
               onClick={() => setActiveTab(tab)}
             >
@@ -42,9 +42,9 @@ const AffiliateProgram_2 = () => {
         </div>
       </div>
       {/* Commission Cards */}
-      <div className="grid md:grid-cols-3 gap-6 mt-6">
+      <div className="grid md:grid-cols-3 gap-6 mt-6 ">
         {commissionData[activeTab].map((item) => (
-          <div key={item.title} className="border p-6 rounded-lg text-center">
+          <div key={item.title} className="border border-[#ffffff] p-6 rounded-lg text-center">
             <h3 className="font-bold">{item.title}</h3>
             <p className="text-xl font-bold mt-2">{item.rate}</p>
             <p className="text-gray-600 mt-2">{item.desc}</p>
@@ -52,7 +52,7 @@ const AffiliateProgram_2 = () => {
         ))}
       </div>
       {/* Success Stories */}
-      <div className="text-center mt-12">
+      <div className="text-center mt-12 bg-[#F5F5F580] p-2">
         <h2 className="text-2xl font-bold">Success Stories</h2>
         <p className="text-gray-600 mt-2">
           Hear from affiliates who have transformed their online presence into
@@ -64,7 +64,7 @@ const AffiliateProgram_2 = () => {
             { name: "Michael Thompson", role: "Tech Reviewer", earnings: "$3,800/month", review: "As a tech reviewer, I've tried many affiliate programs, but Affiliate stands out with its wide product selection and reliable payment system. My audience trusts the products I recommend through this platform." },
             { name: "Emily Rodriguez", role: "Lifestyle Influencer", earnings: "$5,200/month", review: "The seller dashboard provides all the analytics I need to understand what products are performing best with my audience. It's helped me optimize my content strategy and increase my earnings by 40%." }
           ].map((user) => (
-            <div key={user.name} className="border p-6 rounded-lg text-center">
+            <div key={user.name} className="bg-[#ffffff] p-6 rounded-lg text-center">
               <div className="w-16 h-16 bg-gray-200 rounded-full mx-auto mb-4" />
               <h3 className="font-bold">{user.name}</h3>
               <p className="text-gray-600">{user.role}</p>
