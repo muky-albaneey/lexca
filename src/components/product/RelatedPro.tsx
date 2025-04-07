@@ -12,7 +12,7 @@ const relatedProducts = [
     price: "$423.04",
     commission: "8% commission",
     rating: "4.8",
-    image: "/earbuds.jpg",
+    image: "/pod.svg",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const relatedProducts = [
     price: "$423.04",
     commission: "8% commission",
     rating: "4.8",
-    image: "/earbuds.jpg",
+    image: "/pod.svg",
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const relatedProducts = [
     price: "$423.04",
     commission: "8% commission",
     rating: "4.8",
-    image: "/earbuds.jpg",
+    image: "/earbuds.svg",
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ const relatedProducts = [
     price: "$423.04",
     commission: "8% commission",
     rating: "4.8",
-    image: "/earbuds.jpg",
+    image: "/pod.svg",
   },
   {
     id: 5,
@@ -48,7 +48,7 @@ const relatedProducts = [
     price: "$423.04",
     commission: "8% commission",
     rating: "4.8",
-    image: "/earbuds.jpg",
+    image: "/pod.svg",
   },
 ];
 
