@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+
 import { Menu, Bell, LogOut, Settings } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -13,10 +13,12 @@ import ReferralsDashboard from "./ReferralsDashboard";
 import TrackingAnalytics from "./TrackingAnalytics";
 import AffiliateLinks from "./AffiliateLinks";
 import CreateLink from "./CreateLink";
+import { useState } from "react";
 import BlogPage from "./BlogPage";
 import CreatePostPage from "./CreatePostPage";
 import EarningsPayouts from "./EarningsPayouts";
 import SettingsPage from "./SettingsPage";
+import { useStatusStore } from "@/store/nav";
 
 const data = Array.from({ length: 30 }, (_, i) => ({
   name: `Jan ${i + 1}`,
@@ -117,8 +119,7 @@ function DashboardInfo() {
 
 export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [status, setStatus] = useState("overview");
-
+  const { status, setStatus } = useStatusStore();
   const getHomeComponent = () => {
     switch (status) {
       case "overview":
@@ -183,7 +184,7 @@ export default function Dashboard() {
 
        {status === "overview" && (<div className="w-full flex md:flex-row flex-col md:justify-between">
           <div className="flex space-x-2 mb-4">
-            <Button variant="default" className="w-[10rem]" onClick={() => setStatus("Overview")}>Overview</Button>
+            <Button variant="default" className="w-[10rem]" onClick={() => setStatus("overview")}>Overview</Button>
             <Button variant="outline" className="w-[10rem]" onClick={() => setStatus("Notifications")}>Notifications</Button>
           </div>
 

@@ -1,5 +1,7 @@
-import { useState } from 'react';
+"use client";
+
 import { Button } from "@/components/ui/button";
+import { useState } from 'react';
 import { Card } from "@/components/ui/card";
 import { Circle } from 'lucide-react';
 

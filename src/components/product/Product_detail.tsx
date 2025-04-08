@@ -93,17 +93,17 @@ export default function ProductPage() {
 
           <div className="mt-4">
             <h3 className="font-semibold">Quantity</h3>
-            <div className="flex items-center space-x-3 mt-2">
-              <Button onClick={decrement} size="icon">-</Button>
-              <span className="px-4">{quantity}</span>
-              <Button onClick={increment} size="icon">+</Button>
+            <div className="w-[28%] md:w-[15%] flex items-center  mt-2 border rounded-lg">
+              <Button onClick={decrement} size="icon" className="bg-white text-black hover:bg-white">-</Button>
+              <span className="">{quantity}</span>
+              <Button onClick={increment} size="icon" className="bg-white text-black hover:bg-white">+</Button>
             </div>
             <div className="text-sm text-gray-500 mt-1">Total: ${(quantity * 299.99).toFixed(2)}</div>
           </div>
 
-          <div className="flex space-x-3 mt-4">
-            <Button variant="outline">Add to Cart</Button>
-            <Button>Buy now</Button>
+          <div className="flex  mt-4 gap-4 md:w-[50%] w-[100%]">
+            <Button variant="outline" className="w-[45%] md:w-[50%]">Add to Cart</Button>
+            <Button  className="w-[45%] md:w-[50%]">Buy now</Button>
           </div>
 
           <div className="border p-3 rounded-lg bg-gray-50 mt-6">

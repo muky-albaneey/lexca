@@ -1,10 +1,13 @@
-import { useState } from 'react';
+"use client";
 import { Button } from '@/components/ui/button';
 import { Calendar as CalendarIcon, Download } from 'lucide-react';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
 import { format, isWithinInterval, parse } from 'date-fns';
+import { useState } from 'react';
 import jsPDF from 'jspdf';
+
+
 const earningsData = [
   { date: 'Jul 12, 2023', program: 'Amazon Associates', product: 'Wireless Headphones', rate: '8%', amount: '$24.99', status: 'Pending' },
   { date: 'Jul 10, 2023', program: 'eBay Partner Network', product: 'Vintage Camera', rate: '5%', amount: '$15.50', status: 'Pending' },

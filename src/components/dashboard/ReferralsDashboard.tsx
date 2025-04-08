@@ -1,4 +1,4 @@
-import { useState } from 'react';
+"use client";import { useState } from 'react';
 import { Copy, Share2 } from 'lucide-react';
 
 const generateMockReferrals = (count = 42) => {
