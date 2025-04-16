@@ -88,11 +88,12 @@ useEffect(() => {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex gap-6 text-sm text-gray-700">
-            <a href="#">Home</a>
-            <a href="#">Products</a>
-            <a href="#">Categories</a>
-            <a href="#">Sellers</a>
-            <a href="#">About</a>
+            <Link href="/">Home</Link>
+            <Link href="/product">Products</Link>
+            <Link href="/all_category/1">Categories</Link>
+            <Link href="/seller/1">Sellers</Link>
+            <Link href="/about">About</Link>
+            <Link href="/affiliate">Affiliate</Link>
           </nav>
         </div>
 
@@ -163,7 +164,7 @@ useEffect(() => {
             />
             {showDropdown && (
               <div className="absolute right-0 mt-2 w-40 bg-white shadow-lg border rounded-md z-50">
-                <Link href="#" className="flex gap-1  items-center px-4 py-2 hover:bg-gray-100"><AiOutlineSetting />Settings</Link>
+                <Link href="/user_dashboard/1" onClick={() => setStatus("setting")} className="flex gap-1  items-center px-4 py-2 hover:bg-gray-100"><AiOutlineSetting />Settings</Link>
                 <Link href="#" className="flex gap-1 items-center text-red-700 px-4 py-2 hover:bg-red-700 hover:text-white"><CgLogOut color="red" />Log Out</Link>
               </div>
             )}

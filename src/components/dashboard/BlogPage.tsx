@@ -123,7 +123,7 @@ export default function BlogPage() {
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
  
-//   const totalPages = 3;
+//   const totalPages = 3; CreatePostPage
   const handlePrevious = () => {
     if (page > 1) setPage(page - 1);
   };
@@ -153,13 +153,13 @@ export default function BlogPage() {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
             <input
               type="text"
-              placeholder="Search for products..."
+              placeholder="Search for products... CreatePostPage"
               className="w-full pl-10 pr-4 py-2 border rounded-md text-sm"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
-          <button className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded text-sm">
+          <button className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded text-sm" onClick={() => setStatus("CreatePostPage")}>
             <Plus className="h-4 w-4" />
             New Post
           </button>

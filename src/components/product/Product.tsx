@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { IoChevronDown } from "react-icons/io5";
+import Link from "next/link";
 
 
 const sellers = [
@@ -275,7 +276,7 @@ const Product = () => {
                   <h3 className="text-lg font-semibold">{product.name}</h3>
                   <p className="text-gray-600 text-sm">⭐ {product.rating} • By {product.brand}</p>
                   <p className="text-lg font-bold mt-2">${product.price}</p>
-                  <button className="mt-4 bg-black text-white px-4 py-2 rounded w-full">Buy Now</button>
+                  <button className="mt-4 bg-black text-white px-4 py-2 rounded w-full"><Link href='/product_detail/1'>Buy Now</Link> </button>
                 </div>
               </div>
             ))

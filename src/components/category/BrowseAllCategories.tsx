@@ -3,6 +3,7 @@
 import { AiOutlineArrowLeft } from "react-icons/ai"; 
 import { AiOutlineSearch } from "react-icons/ai"; 
 import { useState } from 'react';
+import Link from "next/link";
 
 const categories = [
   {
@@ -186,7 +187,8 @@ export default function BrowseAllCategories() {
                  +2more
                 </span>
             <button className="mt-4 w-full bg-black text-white py-2 rounded-md">
-              Browse Category
+              
+              <Link href='/category/1'>Browse Category</Link>
             </button>
           </div>
         ))}

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const articles = [
   {
@@ -44,18 +45,18 @@ export default function BlogSection() {
             </span>
             <h2 className="text-3xl font-bold mt-2">From Our Blog</h2>
           </div>
-          <a
-            href="#"
+          <Link
+            href="/blog"
             className="text-gray-700 hover:text-gray-900 text-sm font-medium flex items-center gap-1"
           >
             View all articles →
-          </a>
+          </Link>
         </div>
 
         {/* Blog cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map((article) => (
-            <div
+            <Link href='/blog_detail/1'
               key={article.id}
               className="bg-white rounded-xl shadow-md overflow-hidden transition-transform transform hover:scale-105"
             >
@@ -87,7 +88,7 @@ export default function BlogSection() {
                   {article.author}
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

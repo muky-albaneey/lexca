@@ -11,6 +11,7 @@ import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai"; 
 import { CiLocationOn } from "react-icons/ci"; 
+import Link from "next/link";
 
 const sellers = [
   {
@@ -423,7 +424,7 @@ const SellersPage = () => {
                   {seller.description}
                   </p>
                   <p className="text-sm text-gray-500">📦 {seller.products} Products • Since {seller.since}</p>
-                  <button className="mt-4 bg-black text-white px-4 py-2 rounded w-full">View Profile</button>
+                  <button className="mt-4 bg-black text-white px-4 py-2 rounded w-full"><Link href='/user_profile/1'>View Profile</Link> </button>
                 </div>
               </div>
             ))}

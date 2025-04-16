@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const sellers = [
   {
@@ -72,7 +73,7 @@ export default function TrustedSellers() {
                 <span className="ml-1 text-sm font-semibold">{seller.rating}</span>
                 <span className="ml-1 text-xs text-gray-500">({seller.reviews})</span>
               </div>
-              <button className="w-full mt-4 py-2 bg-black text-white rounded-md hover:opacity-90">View Profile</button>
+              <button className="w-full mt-4 py-2 bg-black text-white rounded-md hover:opacity-90"><Link href='/user_profile/1'>View Profile</Link></button>
             </div>
           </div>
         ))}

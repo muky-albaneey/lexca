@@ -135,22 +135,22 @@ export default function Dashboard() {
       case "tracking":
         return <TrackingAnalytics />
       case "blog":
-        return <BlogPage />;
+        return <CreatePostPage />;
       case "message":
         return <div>Message</div>;
       case "setting":
         return <SettingsPage />;
        case "Notifications":
         return <Notifications />;
-      //  case "Overview":
-      //   return <div>Overview</div>;
+       case "CreatePostPage":
+        return <CreatePostPage />;
        case "Products":
         return <UserProductPage />;
       default:
         return <DashboardInfo />;
     }
   };
-  // CreateLink
+
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
