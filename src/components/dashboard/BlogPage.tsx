@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { Search, Plus } from 'lucide-react';
+import Link from 'next/link';
+import { useStatusStore } from '@/store/nav';
 
 const mockPosts = [
   {
@@ -11,7 +13,7 @@ const mockPosts = [
     date: 'Jul 15, 2023',
     description: 'Learn the top strategies that successful affiliate marketers are using to maximize their earnings...',
     views: '1,245 views',
-    status: 'Published',
+    postStatus: 'Published',
   },
   {
     id: 2,
@@ -20,7 +22,7 @@ const mockPosts = [
     date: 'Jul 10, 2023',
     description: 'Discover the secrets to writing product reviews that actually convert visitors into buyers.',
     views: '987 views',
-    status: 'Published',
+    postStatus: 'Published',
   },
   {
     id: 3,
@@ -29,7 +31,7 @@ const mockPosts = [
     date: 'Jun 15, 2023',
     description: 'How to build and leverage an email list to boost your affiliate marketing earnings.',
     views: 'No views yet',
-    status: 'Draft',
+    postStatus: 'Draft',
   },
   {
     id: 4,
@@ -38,7 +40,7 @@ const mockPosts = [
     date: 'Jul 10, 2023',
     description: 'Discover the secrets to writing product reviews that actually convert visitors into buyers.',
     views: '987 views',
-    status: 'Published',
+    postStatus: 'Published',
   },
   {
     id: 5,
@@ -47,7 +49,7 @@ const mockPosts = [
     date: 'Jul 15, 2023',
     description: 'Learn the top strategies that successful affiliate marketers are using to maximize their earnings...',
     views: '1,245 views',
-    status: 'Published',
+    postStatus: 'Published',
   },
   {
     id: 6,
@@ -56,7 +58,7 @@ const mockPosts = [
     date: 'Jul 10, 2023',
     description: 'Discover the secrets to writing product reviews that actually convert visitors into buyers.',
     views: '987 views',
-    status: 'Published',
+    postStatus: 'Published',
   },
   {
     id: 7,
@@ -65,7 +67,7 @@ const mockPosts = [
     date: 'Jun 15, 2023',
     description: 'How to build and leverage an email list to boost your affiliate marketing earnings.',
     views: 'No views yet',
-    status: 'Draft',
+    postStatus: 'Draft',
   },
   {
     id: 8,
@@ -74,7 +76,7 @@ const mockPosts = [
     date: 'Jul 10, 2023',
     description: 'Discover the secrets to writing product reviews that actually convert visitors into buyers.',
     views: '987 views',
-    status: 'Published',
+    postStatus: 'Published',
   },
   {
     id: 9,
@@ -83,7 +85,7 @@ const mockPosts = [
     date: 'Jul 15, 2023',
     description: 'Learn the top strategies that successful affiliate marketers are using to maximize their earnings...',
     views: '1,245 views',
-    status: 'Published',
+    postStatus: 'Published',
   },
   {
     id: 11,
@@ -92,7 +94,7 @@ const mockPosts = [
     date: 'Jul 10, 2023',
     description: 'Discover the secrets to writing product reviews that actually convert visitors into buyers.',
     views: '987 views',
-    status: 'Published',
+    postStatus: 'Published',
   },
   {
     id: 12,
@@ -101,7 +103,7 @@ const mockPosts = [
     date: 'Jun 15, 2023',
     description: 'How to build and leverage an email list to boost your affiliate marketing earnings.',
     views: 'No views yet',
-    status: 'Draft',
+    postStatus: 'Draft',
   },
   {
     id: 13,
@@ -110,7 +112,7 @@ const mockPosts = [
     date: 'Jul 10, 2023',
     description: 'Discover the secrets to writing product reviews that actually convert visitors into buyers.',
     views: '987 views',
-    status: 'Published',
+    postStatus: 'Published',
   },
 ];
 
@@ -119,7 +121,10 @@ const statuses = ['Published', 'Draft'];
 
 export default function BlogPage() {
   const [category, setCategory] = useState('All Categories');
-  const [status, setStatus] = useState('Published');
+  // const [status, setStatus] = useState('Published');
+  const [postStatus, setPostStatus] = useState('Published');
+ const { status, setStatus } = useStatusStore();
+
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
  
@@ -135,7 +140,7 @@ export default function BlogPage() {
     .filter(
       (post) =>
         (category === 'All Categories' || post.category === category) &&
-        (status === '' || post.status.toLowerCase() === status.toLowerCase()) &&
+        (postStatus === '' || post.postStatus.toLowerCase() === postStatus.toLowerCase()) &&
         post.title.toLowerCase().includes(search.toLowerCase())
     );
 
@@ -159,10 +164,14 @@ export default function BlogPage() {
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
-          <button className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded text-sm" onClick={() => setStatus("CreatePostPage")}>
+        
+          {/* <Link href="/user_dashboard/1" className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded text-sm" onClick={() => setStatus("createPostPage")}> */}
+          <button className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded text-sm"  onClick={() => setStatus("createPostPage")}>
             <Plus className="h-4 w-4" />
             New Post
           </button>
+          {/* </Link> */}
+          
         </div>
       </div>
 
@@ -181,17 +190,17 @@ export default function BlogPage() {
           ))}
         </select>
         <select
-          className="border px-4 py-2 rounded text-sm"
-          value={status}
-          onChange={(e) => {
-            setStatus(e.target.value);
-            setPage(1);
-          }}
-        >
-          {statuses.map((stat) => (
-            <option key={stat}>{stat}</option>
-          ))}
-        </select>
+  value={postStatus}
+  onChange={(e) => {
+    setPostStatus(e.target.value);
+    setPage(1);
+  }}
+>
+  {statuses.map((stat) => (
+    <option key={stat}>{stat}</option>
+  ))}
+</select>
+
       </div>
 
       {/* Posts Grid */}
@@ -212,10 +221,10 @@ export default function BlogPage() {
                 <span>{post.views}</span>
                 <span
                   className={`px-2 py-[2px] rounded-full text-[10px] ${
-                    post.status === 'Published' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
+                    post?.status === 'Published' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
                   }`}
                 >
-                  {post.status}
+                  {post?.status}
                 </span>
               </div>
             </div>

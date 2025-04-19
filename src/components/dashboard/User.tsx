@@ -19,6 +19,8 @@ import CreatePostPage from "./CreatePostPage";
 import EarningsPayouts from "./EarningsPayouts";
 import SettingsPage from "./SettingsPage";
 import { useStatusStore } from "@/store/nav";
+import ChatMessenger from "./ChatMessenger";
+import Header from "../Header";
 
 const data = Array.from({ length: 30 }, (_, i) => ({
   name: `Jan ${i + 1}`,
@@ -26,21 +28,11 @@ const data = Array.from({ length: 30 }, (_, i) => ({
   lastMonth: 3000,
 }));
 
-const navLinks = [
-  { label: "Dashboard", value: "overview" },
-  { label: "Upload Products", value: "upload" },
-  { label: "Affiliate Links", value: "links" },
-  { label: "Earnings & Payouts", value: "earnings" },
-  { label: "Referrals", value: "referrals" },
-  { label: "Tracking", value: "tracking" },
-  { label: "Blog", value: "blog" },
-  { label: "Message", value: "message" },
-  { label: "Settings", value: "setting" },
-];
 
 function DashboardInfo() {
   return (
     <>
+  
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
         <Card>
           <CardContent className="p-4">
@@ -118,8 +110,23 @@ function DashboardInfo() {
 
 
 export default function Dashboard() {
+  
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { status, setStatus } = useStatusStore();
+  const navLinks = [
+    { label: "Dashboard", value: "overview" },
+    { label: "Upload Products", value: "upload" },
+    { label: "Affiliate Links", value: "links" },
+    { label: "Earnings & Payouts", value: "earnings" },
+    { label: "Referrals", value: "referrals" },
+    { label: "Tracking", value: "tracking" },
+    { label: "Blog", value: "blog" },
+    { label: "Message", value: "message" },
+    { label: "Settings", value: "setting" },
+    { label: "CreatePostPage", value: "createPostPage" },
+  ];
+  
+  // const blogStatus = status == blog
   const getHomeComponent = () => {
     switch (status) {
       case "overview":
@@ -135,15 +142,17 @@ export default function Dashboard() {
       case "tracking":
         return <TrackingAnalytics />
       case "blog":
+        return <BlogPage />;
+      case "createPostPage":
         return <CreatePostPage />;
       case "message":
-        return <div>Message</div>;
+        return <ChatMessenger />;
       case "setting":
         return <SettingsPage />;
        case "Notifications":
         return <Notifications />;
-       case "CreatePostPage":
-        return <CreatePostPage />;
+      //  case "CreatePostPage":
+      //   return <CreatePostPage />;
        case "Products":
         return <UserProductPage />;
       default:

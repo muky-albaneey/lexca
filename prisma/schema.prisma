@@ -1,0 +1,219 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+  EDITOR
+}
+
+model User {
+  id               Int             @id @default(autoincrement())
+  fname            String
+  lname            String
+  username         String?
+  email            String          @unique
+  password         String // 👈 Securely hashed password
+  description      String?
+  link             String?
+  language        String @default("English")
+  timezone        String @default("Pacific UTC(-8)")
+  role             Role            @default(USER)
+  socialMedia      SocialMedia?
+  socialMediaId    Int?
+  paymentDetails   PaymentDetails?
+  paymentDetailsId Int? // Optional relation field
+  messagesSent     Message[]       @relation("MessagesSent")
+  messagesReceived Message[]       @relation("MessagesReceived")
+  products         Product[]       @relation("UserProducts")
+  affiliateLinks   AffiliateLink[]
+  earnings         Earning[]
+  referredBy       User?           @relation("UserReferrals", fields: [referredById], references: [id])
+  referredById     Int? // Optional relation field
+  referrals        User[]          @relation("UserReferrals")
+  createdAt        DateTime        @default(now())
+
+    // Relationships
+    replies Reply[] // 👈 Add this line to User model
+    // In User
+    posts    Post[]
+    comments       Comment[]
+    likes          Like[]
+    images         PostImage[]
+
+   profileImage  ProfileImage?
+}
+
+model ProfileImage {
+  id     Int    @id @default(autoincrement())
+  url    String // URL or path to the image
+
+  // One-to-one relation with User
+  user   User   @relation(fields: [userId], references: [id])
+  userId Int    @unique
+}
+
+
+model Post {
+  id             String       @id @default(uuid())
+  title          String
+  url            String?
+  content        String
+  category       String
+  excerpt        String?
+  tags           String[]
+  allowComments  Boolean      @default(false)
+  featured       Boolean      @default(false)
+  seoOptimized   Boolean      @default(false)
+  isDraft        Boolean      @default(true)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  // Relationships
+  authorId Int
+  // In Post
+author   User @relation(fields: [authorId], references: [id])
+
+  comments       Comment[]
+  likes          Like[]
+  images         PostImage[]
+}
+model Comment {
+  id        String   @id @default(uuid())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relationships
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id])
+  authorId  Int
+  author    User     @relation(fields: [authorId], references: [id])
+
+    replies Reply[] // 👈 Add this line to User model
+
+}
+model Reply {
+  id         String   @id @default(uuid())
+  content    String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relationships
+  commentId  String
+  comment    Comment  @relation(fields: [commentId], references: [id])
+
+  authorId   Int
+  author     User     @relation(fields: [authorId], references: [id])
+}
+
+model Like {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+
+  // Relationships
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id])
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@unique([postId, userId]) // One like per user per post
+}
+model PostImage {
+  id        String   @id @default(uuid())
+  url       String
+
+  // Relationships
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id])
+
+  user   User @relation(fields: [userId], references: [id])
+userId Int
+  
+}
+
+model SocialMedia {
+  id        Int     @id @default(autoincrement())
+  website String?
+  twitter String?
+  facebook  String?
+  instagram String?
+  tiktok    String?
+  youtube String?
+  whatsApp  String?
+  user      User    @relation(fields: [userId], references: [id])
+  userId    Int     @unique
+}
+
+model PaymentDetails {
+  id            Int    @id @default(autoincrement())
+  paymentMethod String
+  bankName      String
+  accountNumber String
+  routingNumber String
+  user          User   @relation(fields: [userId], references: [id])
+  userId        Int    @unique
+}
+
+model Message {
+  id         Int      @id @default(autoincrement())
+  content    String
+  sender     User     @relation("MessagesSent", fields: [senderId], references: [id])
+  senderId   Int
+  receiver   User     @relation("MessagesReceived", fields: [receiverId], references: [id])
+  receiverId Int
+  createdAt  DateTime @default(now())
+}
+
+model Product {
+  id             Int             @id @default(autoincrement())
+  name           String
+  description    String?
+  price          Float
+  commission     Float?
+  category       String?
+  url            String?
+  videoUrl       String?
+  trackingId     String?
+  slug           String?
+  createdAt      DateTime        @default(now())
+  status String @default("published")
+  // Relations
+  ownerId        Int?
+  owner          User?           @relation("UserProducts", fields: [ownerId], references: [id])
+  affiliateLinks AffiliateLink[]
+  images         ProductImage[]  // New relation
+}
+model ProductImage {
+  id        Int      @id @default(autoincrement())
+  url       String   // URL or file path to the image
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id])
+}
+
+
+model AffiliateLink {
+  id        Int      @id @default(autoincrement())
+  url       String
+  product   Product  @relation(fields: [productId], references: [id])
+  productId Int
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  createdAt DateTime @default(now())
+}
+
+model Earning {
+  id        Int      @id @default(autoincrement())
+  amount    Float
+  source    String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  createdAt DateTime @default(now())
+}

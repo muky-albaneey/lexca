@@ -6,7 +6,7 @@ export default function UploadProduct() {
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [category, setCategory] = useState('');
   const [success, setSuccess] = useState(false);
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState<File[]>([]);
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -30,17 +30,75 @@ export default function UploadProduct() {
     setCategory(cat);
     setCategoryOpen(false);
   };
-
-  const handlePublish = () => {
+  const handleSaveDraft = async () => {
+    const token = localStorage.getItem('authToken');
+  
     const payload = {
       ...formData,
       category,
-      images,
+      status: 'draft', // 👈 Add status explicitly
+      images: images.map((img) => URL.createObjectURL(img)), // Adjust image upload as needed
     };
-    console.log('Publishing Product:', payload);
-    setSuccess(true);
-    setTimeout(() => setSuccess(false), 2000);
+  
+    try {
+      const res = await fetch('/api/products', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(payload),
+      });
+  
+      const result = await res.json();
+  
+      if (result.success) {
+        setSuccess(true);
+        setTimeout(() => setSuccess(false), 2000);
+      } else {
+        alert(result.error || 'Failed to save draft.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Something went wrong!');
+    }
   };
+  
+  const handlePublish = async () => {
+    const token = localStorage.getItem('authToken'); // or however you store it
+  
+    const payload = {
+      ...formData,
+      category,
+      images: images.map((img) => URL.createObjectURL(img)), // Placeholder, consider uploading first
+    };
+  
+    try {
+      const res = await fetch('/api/products', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`, // ✅ Add token here
+        },
+        body: JSON.stringify(payload),
+      });
+  
+      const result = await res.json();
+  
+      if (result.success) {
+        setSuccess(true);
+        setTimeout(() => setSuccess(false), 2000);
+      } else {
+        alert(result.error || 'Failed to publish product.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Something went wrong!');
+    }
+  };
+  
+  
+  
 
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files);
@@ -157,7 +215,7 @@ export default function UploadProduct() {
         </div>
 
         <div className="flex gap-4">
-          <button className="bg-black text-white px-4 py-2 rounded">Save as Draft</button>
+          <button onClick={handleSaveDraft} className="bg-black text-white px-4 py-2 rounded">Save as Draft</button>
           <button onClick={handlePublish} className="border border-black px-4 py-2 rounded">Publish Product</button>
         </div>
       </div>

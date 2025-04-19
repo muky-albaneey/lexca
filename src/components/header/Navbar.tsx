@@ -232,6 +232,7 @@ useEffect(() => {
               <Link href="/user_dashboard/1" className="py-2 px-6 text-sm" onClick={() => setStatus("tracking")}>Tracking</Link>
               <Link href="/user_dashboard/1" className="py-2 px-6 text-sm" onClick={() => setStatus("blog")}>Blog</Link>
               <Link href="/user_dashboard/1" className="py-2 px-6 text-sm" onClick={() => setStatus("setting")}>Settings</Link>
+              <Link href="/user_dashboard/1" className="py-2 px-6 text-sm" onClick={() => setStatus("message")}>Message</Link>
               <Link href="/user_dashboard/1" className="py-2 px-6 text-sm text-red-600">Logout</Link>
             </div>
           )}
